@@ -26,6 +26,10 @@ namespace ScreenBin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddWebOptimizer(pipeline =>
+            {
+                pipeline.AddScssBundle("/css/all.css", "/scss/Main.scss");
+            });
             services.AddControllersWithViews();
             services.AddDistributedMemoryCache();
 
@@ -58,6 +62,7 @@ namespace ScreenBin
             app.UseStatusCodePages();
 
             app.UseHttpsRedirection();
+            app.UseWebOptimizer(); //ligershark
             app.UseStaticFiles();
 
             app.UseRouting();
