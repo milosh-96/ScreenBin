@@ -1,0 +1,54 @@
+﻿@model ScreenshotDetailsViewModel
+@{ 
+    ViewData["Title"] = Model.Title;
+}
+<div>
+    <div class="mb-2">
+        @if (Model.CanEdit)
+        {
+            <form method="post" asp-action="Update" asp-controller="Manage" asp-area="Screenshots" asp-route-id="@Model.Id">
+            <div class="row g-0">
+                <div class="col col-sm-8 col-md-10">
+                    <input class="form-control rounded-0 form-control-lg" asp-for="Title" />
+                    <hr />
+                </div>
+                <div class="col-3 col-md">
+                    <button class="btn rounded-0 w-100 btn-primary btn-lg">
+                        <i class="fa fa-check"></i>
+                    </button>
+                </div>
+                <!--<div class="col-2 col-md">
+                    <button class="btn rounded-0 w-100 btn-danger btn-lg">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>-->
+            </div>
+                </form>
+
+        }
+        else
+        {
+            <h2>
+                @Model.Title
+            </h2>
+        }
+    </div>
+    <div class="image">
+        <img src="@Model.ImageUri.ToString()" alt="@Model.Title" width="100%" />
+    </div>
+    @if (Model.CanEdit)
+    {
+        <div class="row">
+            <div class="col">
+                <form asp-action="Delete" asp-controller="Manage" asp-area="Screenshots" asp-route-id="@Model.Id" method="post">
+                    <button type="submit" class="btn rounded-0 btn-danger btn my-2">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    }
+    <div class="actions">
+        <a href="#">Report</a>
+    </div>
+</div>

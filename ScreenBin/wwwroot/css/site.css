@@ -1,0 +1,20 @@
+﻿.list {
+    margin:0;
+    padding:0;
+}
+.list.unsorted-list li {
+    list-style-type:none;   
+}
+
+.picture-tag {
+    position:absolute;
+    top:0;
+    left:0;
+    padding:5px;
+    color:#fff;
+    background:red;
+}
+
+.feed > .list li {
+    position:relative;
+}

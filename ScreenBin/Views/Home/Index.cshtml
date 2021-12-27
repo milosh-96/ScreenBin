@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div class="row">
+        <div class="col col-md-8">
+            <h3>Upload Now!</h3>
+            <form asp-controller="Upload"
+                  asp-action="Upload"
+                  asp-area="Screenshots"
+                  method="post" enctype="multipart/form-data">
+                <div class="py-2">
+                    <label class="form-label visually-hidden" for="file">
+                        Select File
+                    </label>
+                    <input class="form-control" id="file" type="file" name="file" value="" />
+                </div>
+
+                <button class="btn btn-primary btn-lg">Upload</button>
+            </form>
+        </div>
+        <div class="col col-md-4">
+            <h3>Tips</h3>
+            <ul>
+                <li>
+                    Do not upload sensitive (private) images!
+                </li>
+                <li>
+                    Make sure your image doesn't show any personal information you wouldn't like others to see! (especially credit card info and/or passwords)!
+                </li>
+                <li>
+                    You will be able to delete your upload and modify information until you close the browser (all windows). After that you won't be able to do so.
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-md-6">
+            <h3>Recent Screenshots <span title="Screenshots that were marked as public by uploader.">
+                                       <i class="fa fa-info-circle"></i></span></h3>
+            <div class="feed">
+                <ul class="list unsorted-list">
+                    @for (int i = 0; i < 5; i++)
+                    {
+                    <li>
+                        <img src="https://cdn.pixabay.com/photo/2017/11/25/12/34/hamburg-2976711_960_720.jpg" alt="Alternate Text" width="100%" />
+                        <div class="picture-tag">
+                            Hamburg
+                        </div>
+                    </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+        <div class="col col-md-6">
+            <h3>Fun Facts</h3>
+        </div>
+    </div>
+</div>
+<div id="debug">
+    debug: <span class="pasted"></span>
+</div>

@@ -1,0 +1,60 @@
+﻿@inject IConfiguration config
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@config.GetSection("SiteInformation").GetSection("Description").Value" />
+    <title>@ViewData["Title"] - @config.GetSection("SiteInformation").GetSection("Name").Value</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header style="padding:25px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center">
+                        <a href="/">
+                            <strong>@config.GetSection("SiteInformation").GetSection("Name").Value</strong>
+                        </a>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+            @RenderBody()
+    </div>
+
+    <footer style="background:#dcdcdc" class="py-1">
+        <div class="container-fluid">
+            <div class="row py-3">
+                <div class="col col-md-3">
+                    <ul class="list-group">
+                        <li class="list-group-item" style="border:none;background:none">
+                            <a asp-area="" asp-controller="Home" asp-action="Privacy">Usage Guide</a>
+                        </li>
+                        <li class="list-group-item" style="border:none;background:none">
+                            <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="list-group-item" style="border:none;background:none">
+                            <a asp-area="" asp-controller="Home" asp-action="Privacy">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    &copy; 2021 - ScreenBin
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
